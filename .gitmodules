@@ -1,0 +1,6 @@
+[submodule "link"]
+	path = link
+	url = https://github.com/Ableton/link
+[submodule "rtmidi"]
+	path = rtmidi
+	url = https://github.com/thestk/rtmidi
