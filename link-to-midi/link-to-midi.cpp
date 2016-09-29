@@ -30,7 +30,7 @@ auto connectAllMidiPorts() {
     return midiPorts;
 }
 
-void printStatus(int nrPeers, int bpm) {
+void printStatus(int nrPeers, double bpm) {
     std::cout << "Ableton Link: peers " << nrPeers << " bpm: " << bpm;
 
     std::cout << "   \r" << std::flush;
@@ -39,7 +39,7 @@ void printStatus(int nrPeers, int bpm) {
 
 int main(int, char** argv)
 {
-    std::atomic<int> bpm = 120;
+    std::atomic<double> bpm = 120.;
     std::atomic<int> nrPeers = 0;
     std::atomic<bool> run = true;
 
@@ -58,7 +58,7 @@ int main(int, char** argv)
                 port->sendMessage(&message);
 
             using namespace std::chrono_literals;
-            std::this_thread::sleep_for(std::chrono::milliseconds(60 * 1000 / (24 * bpm)));
+            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<long long>(60 * 1000 / (24 * bpm))));
         }
     });
 
