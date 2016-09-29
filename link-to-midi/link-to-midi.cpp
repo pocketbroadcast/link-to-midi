@@ -12,16 +12,6 @@
 #include <RtMidi.h>
 
 namespace detail {
-//    std::shared_ptr<RtMidiIn> connectMidiIn(int portNumber) {
-//        auto in = std::make_shared<RtMidiIn>();
-//
-//        in->ignoreTypes(true, false, true);
-//        in->setCallback([](auto, auto, auto) {}, nullptr);
-//        in->openPort(portNumber, in->getPortName(portNumber));
-//
-//        return in;
-//    }
-
     auto connectMidiOut(int portNumber) {
         auto out = std::make_unique<RtMidiOut>();
         out->openPort(portNumber, out->getPortName(portNumber));
@@ -32,10 +22,6 @@ namespace detail {
 
 auto connectAllMidiPorts() {
     auto midiPorts = std::vector<std::unique_ptr<RtMidiOut>>{};
-
-//    auto in = std::make_unique<RtMidiIn>();
-//    for (auto i = 0U; i < in->getPortCount(); i++)
-//        midiPorts.push_back(detail::connectMidiIn(i));
 
     auto out = std::make_unique<RtMidiOut>();
     for (auto i = 0U; i < out->getPortCount(); i++)
