@@ -7,8 +7,6 @@
 #include <iostream>
 #include <thread>
 #include <string>
-#include <map>
-#include <future>
 
 #include <ableton/Link.hpp>
 #include <RtMidi.h>
