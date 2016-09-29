@@ -24,8 +24,8 @@ namespace detail {
 //        return in;
 //    }
 
-    std::shared_ptr<RtMidiOut> connectMidiOut(int portNumber) {
-        auto out = std::make_shared<RtMidiOut>();
+    auto connectMidiOut(int portNumber) {
+        auto out = std::make_unique<RtMidiOut>();
         out->openPort(portNumber, out->getPortName(portNumber));
 
         return out;
@@ -33,7 +33,7 @@ namespace detail {
 }
 
 auto connectAllMidiPorts() {
-    auto midiPorts = std::vector<std::shared_ptr<RtMidiOut>>{};
+    auto midiPorts = std::vector<std::unique_ptr<RtMidiOut>>{};
 
 //    auto in = std::make_unique<RtMidiIn>();
 //    for (auto i = 0U; i < in->getPortCount(); i++)
